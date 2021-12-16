@@ -125,6 +125,10 @@ USE_L10N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = 'student_management_app.CustomUser'
+AUTHENTICATION_BACKENDS=['student_management_app.EmailBackEnd.EmailBackEnd']
+
+EMAIL_BACKEND="django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH=os.path.join(BASE_DIR,"sent_mails")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
