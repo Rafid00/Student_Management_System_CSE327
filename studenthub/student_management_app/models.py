@@ -8,6 +8,11 @@ class CustomUser(AbstractUser):
     user_type_data=((1,"HOD"),(2,"Staff"),(3,"Student"))
     user_type=models.CharField(default=1,choices=user_type_data,max_length=10)
 
+class SemesterModel(models.Model):
+    id=models.AutoField(primary_key=True)
+    semester_start_year=models.DateField()
+    semester_end_year=models.DateField()
+    object=models.Manager()
 
 class Admin(models.Model):
     id=models.AutoField(primary_key=True)
@@ -51,6 +56,24 @@ class Students(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
+
+class Attendance(models.Model):
+    id=models.AutoField(primary_key=True)
+    subject_id=models.ForeignKey(Subjects,on_delete=models.DO_NOTHING)
+    attendance_date=models.DateField()
+    created_at=models.DateTimeField(auto_now_add=True)
+    session_year_id=models.ForeignKey(SemesterModel,on_delete=models.CASCADE)
+    updated_at=models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+class AttendanceReport(models.Model):
+    id=models.AutoField(primary_key=True)
+    student_id=models.ForeignKey(Students,on_delete=models.DO_NOTHING)
+    attendance_id=models.ForeignKey(Attendance,on_delete=models.CASCADE)
+    status=models.BooleanField(default=False)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
+    objects=models.Manager()
 
 
 @receiver(post_save,sender=CustomUser)

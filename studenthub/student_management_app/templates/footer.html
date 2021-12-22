@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="{% static 'style_2.css' %}" />
+      <title>Footer</title>
+      <!-- font-family: 'Roboto', sans-serif; -->
+   </head>
+   <body>
+      <footer>
+         <div class="footer-container">
+            <div class="left-footer">
+               <div class="first-three-left">
+                  <p><a href="#">HOME</a></p>
+                  <p><a href="#">ABOUT</a></p>
+                  <p><a href="#">CONTACT</a></p>
+               </div>
+               <div class="second-left">
+                  <a href="#"><p>STUDENT PORTAL</p></a>
+               </div>
+               <div class="third-left">
+                  <a href="#"><p>FACULTY PROFILE</p></a>
+               </div>
+               <div class="social-icons">
+                  <a href="#"><img src="{% static 'images/facebook 1.svg' %}" alt="" /></a>
+                  <a href="#"><img src="{% static 'images/whatsapp 1.svg' %}" alt="" /></a>
+                  <a href="#"><img src="{% static 'images/instagram 1.svg' %}" alt="" /></a>
+                  <a href="#"><img src="{% static 'images/gmail 1.svg' %}" alt="" /></a>
+               </div>
+            </div>
+            <div class="right-footer">
+               <div class="footer-logo">
+                  <img src="{% static 'images/Footer Logo.svg' %}" alt="" />
+               </div>
+               <div class="footer-description">
+                  <p>
+                     Student Hub is one of the most user-friendly management in the country. It will help not only save your precious time
+                     but also keep your data safe
+                  </p>
+               </div>
+               <div class="copy-right">
+                  <p>Ⓒ 2021 ibibogroup All rights reserved</p>
+               </div>
+            </div>
+         </div>
+      </footer>
+   </body>
+</html>

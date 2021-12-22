@@ -13,7 +13,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from student_management_app.EmailBackEnd import EmailBackEnd
-from student_management_app.models import CustomUser, Courses
+from student_management_app.models import CustomUser, Courses, SemesterModel
 from studenthub import settings
 
 # Create your views here.
@@ -55,3 +55,34 @@ def GetUserDetails(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect("/")
+
+def signup_admin(request):
+    return render(request,"signup_admin_page.html")
+
+def signup_student(request):
+    courses=Courses.objects.all()
+    session_years=SemesterModel.object.all()
+    return render(request,"signup_student_page.html",{"courses":courses,"session_years":session_years})
+
+def signup_staff(request):
+    return render(request,"signup_staff_page.html")
+
+def adminview(request):
+    return render(request,'admin_view.html')
+
+def manage_student(request):
+    return render(request,'manage_student.html')
+
+def manage_facutly(request):
+     return render(request,'manage_faculty.html')
+
+def advising(request):
+     return render(request,'advising.html')
+
+def logout_admin(request):
+    return render(request, 'signup.html')
+
+def send_notice(request):
+    return render(request,'sendnotice.html')
+
+
