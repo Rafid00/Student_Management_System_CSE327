@@ -1,22 +1,92 @@
-{% extends 'base.html' %}
-{% block title_block %} manage Student {% endblock %}
+{% extends 'base2.html' %}
+
 {% block body_block %}
+    <!-- Main content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add Faculty</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+              {% url 'add_staff_save' as action_path %}
+              {% include 'form_template.html' with messages=messages form=form  action_path=action_path button_text="Add Faculty" %}
+          </div>
+          <!-- /.card -->
 
 
-<p>Manage Faculty</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+        </div>
+    </div>
+    <!-- /.content -->
 {% endblock %}
+{% block custom_js %}
+<script>
+    $(document).ready(function(){
+        $("#id_email").keyup(function(){
+            var email=$(this).val();
+
+           if(email!=""){
+                $.ajax({
+                    url:"{% url 'student_app:check_email_exist' %}",
+                    type:'POST',
+                    data:{email:email}
+                })
+                .done(function(response){
+                    console.log(response);
+                    if(response=="True"){
+                        $(".email_error").remove();
+                        $("<span class='email_error' style='padding: 5px;color: red;font-weight: bold;'>Email Not Available</span>").insertAfter("#id_email");
+                    }
+                    else{
+                        $(".email_error").remove();
+                        $("<span class='email_error' style='padding: 5px;color: green;font-weight: bold;'>Email Available</span>").insertAfter("#id_email");
+                    }
+                })
+                .fail(function(){
+                    console.log("failed");
+                })
+            }
+            else{
+              $(".email_error").remove();
+            }
+
+        });
+
+        $("#id_username").keyup(function(){
+            var username=$(this).val();
+
+            if(username!=""){
+                $.ajax({
+                    url:"{% url 'student_app:check_username_exist' %}",
+                    type:'POST',
+                    data:{username:username}
+                })
+                .done(function(response){
+                    console.log(response);
+                    if(response=="True"){
+                        $(".username_error").remove();
+                        $("<span class='username_error' style='padding: 5px;color: red;font-weight: bold;'>Username Not Available</span>").insertAfter("#id_username");
+                    }
+                    else{
+                        $(".username_error").remove();
+                        $("<span class='username_error' style='padding: 5px;color: green;font-weight: bold;'>Username Available</span>").insertAfter("#id_username");
+                    }
+                })
+                .fail(function(){
+                    console.log("failed");
+                })
+            }
+            else{
+                $(".username_error").remove();
+            }
+
+        });
+
+    });
+</script>
+{% endblock custom_js %}

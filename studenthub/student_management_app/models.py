@@ -10,9 +10,13 @@ class CustomUser(AbstractUser):
 
 class SemesterModel(models.Model):
     id=models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20,default="Spring")
     semester_start_year=models.DateField()
     semester_end_year=models.DateField()
     object=models.Manager()
+
+    def __str__(self):
+        return self.name
 
 class Admin(models.Model):
     id=models.AutoField(primary_key=True)
@@ -22,10 +26,12 @@ class Admin(models.Model):
 
 class Staffs(models.Model):
     id=models.AutoField(primary_key=True)
+    email = models.EmailField()
     admin=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     address=models.TextField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
+    fcm_token=models.TextField(default="")
     objects=models.Manager()
 
 class Courses(models.Model):
@@ -34,6 +40,9 @@ class Courses(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
+
+    def __str__(self):
+        return self.course_name
 
 class Subjects(models.Model):
     id=models.AutoField(primary_key=True)
@@ -55,6 +64,7 @@ class Students(models.Model):
     session_end_year=models.DateField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
+    fcm_token=models.TextField(default="")
     objects = models.Manager()
 
 class Attendance(models.Model):
@@ -73,6 +83,34 @@ class AttendanceReport(models.Model):
     status=models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
+    objects=models.Manager()
+
+
+class NotificationStudent(models.Model):
+    id = models.AutoField(primary_key=True)
+    student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+
+class NotificationStaffs(models.Model):
+    id = models.AutoField(primary_key=True)
+    staff_id = models.ForeignKey(Staffs, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+class StudentResult(models.Model):
+    id=models.AutoField(primary_key=True)
+    student_id=models.ForeignKey(Students,on_delete=models.CASCADE)
+    subject_id=models.ForeignKey(Subjects,on_delete=models.CASCADE)
+    subject_exam_marks=models.FloatField(default=0)
+    subject_assignment_marks=models.FloatField(default=0)
+    created_at=models.DateField(auto_now_add=True)
+    updated_at=models.DateField(auto_now_add=True)
     objects=models.Manager()
 
 
