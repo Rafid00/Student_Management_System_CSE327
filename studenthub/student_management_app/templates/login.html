@@ -67,7 +67,8 @@
 
       <section class="section faculty-login">
          <div class="form-container">
-            <form action="#" method="post">
+            <form action="{% url 'student_app:dologin' %}" method="post">
+               {% csrf_token %}
                <div class="login-container">
                   <div class="title">
                      <p>FACULTY PORTAL</p>
