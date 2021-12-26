@@ -7,8 +7,7 @@ from django.contrib import admin
 
 app_name = 'student_app'
 urlpatterns = [
-    path('', views.signup, name='signup'),
-    path('login/', views.login_home, name='login_home'),
+    path('', views.login_home,  name='login_home'),
     path('main/', views.home, name='main'),
     path('dologin/', views.doLogin, name='dologin'),
     path('adhome/', views.adminview, name='adminview'),
@@ -27,4 +26,5 @@ urlpatterns = [
          name="check_email_exist"),
     path("check_username_exist/", adminviews.check_username_exist,
          name="check_username_exist"),
+    path('logout_user/', views.logout_user, name="logout_user"),
 ]

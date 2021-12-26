@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -8,7 +9,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-      <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="{% static 'css/login.css' %}" />
    </head>
    <body>
       <!-- NAVBAR -->
@@ -16,7 +17,7 @@
          <div class="navbar">
             <div class="navbar-left">
                <a class="navbar-brand" href="#">
-                  <img src="images/logo_1.svg" alt="" />
+                  <img src="{% static 'images/logo_1.svg' %}" alt="" />
                </a>
             </div>
             <div class="navbar-mid">
@@ -34,9 +35,9 @@
       </nav>
 
       <!-- LOGIN FORM -->
-      <section class="section">
+       <section class="section">
          <div class="image-student side-image">
-            <img src="images/undraw_mathematics.svg" alt="" />
+            <img src="{% static 'images/undraw_mathematics.svg' %}" alt="" />
          </div>
          <div class="form-container">
             <form action="#" method="post">
@@ -61,11 +62,11 @@
                </div>
             </form>
          </div>
-      </section>
+      </section> 
 
       <section class="section">
          <div class="form-container">
-            <form action="#" method="post">
+            <form action="{% url 'student_app:dologin' %}" method="post">
                <div class="login-container">
                   <div class="title">
                      <p>FACULTY PORTAL</p>
@@ -89,7 +90,7 @@
          </div>
 
          <div class="image-student side-teacher">
-            <img src="images/undraw_quiz.svg" alt="" />
+            <img src="{ % static 'images/undraw_quiz.svg' %}" alt="" />
          </div>
       </section>
 
@@ -108,15 +109,15 @@
                   <a href="#"><p>FACULTY PROFILE</p></a>
                </div>
                <div class="social-icons">
-                  <a href="#"><img src="images/facebook 1.svg" alt="" /></a>
-                  <a href="#"><img src="images/whatsapp 1.svg" alt="" /></a>
-                  <a href="#"><img src="images/instagram 1.svg" alt="" /></a>
-                  <a href="#"><img src="images/gmail 1.svg" alt="" /></a>
+                  <a href="#"><img src="{% static 'images/facebook 1.svg' %}" alt="" /></a>
+                  <a href="#"><img src="{% static 'images/whatsapp 1.svg' %}" alt="" /></a>
+                  <a href="#"><img src="{% static 'images/instagram 1.svg' %}" alt="" /></a>
+                  <a href="#"><img src="{% static 'images/gmail 1.svg' %}" alt="" /></a>
                </div>
             </div>
             <div class="right-footer">
                <div class="footer-logo">
-                  <img src="images/Footer Logo.svg" alt="" />
+                  <img src="{% static 'images/Footer Logo.svg' %}" alt="" />
                </div>
                <div class="footer-description">
                   <p>

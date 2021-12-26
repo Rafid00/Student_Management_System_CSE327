@@ -17,8 +17,6 @@ from student_management_app.models import CustomUser, Courses, SemesterModel
 from studenthub import settings
 
 # Create your views here.
-def signup(request):
-    return render(request,'signup.html')
 
 def login_home(request):
     return render(request,'login.html')
@@ -36,12 +34,12 @@ def doLogin(request):
             if user.user_type=="1":
                 return render(request, 'home.html')
             elif user.user_type=="2":
-               return render(request, 'signup.html')
+               return render(request, 'login.html')
             else:
-                return render(request, 'signup.html')
+                return render(request, 'login.html')
     else:
         messages.error(request,"Invalid Login Details")
-        return render(request, 'signup.html') 
+        return render(request, 'login.html') 
             
 
 
@@ -54,7 +52,7 @@ def GetUserDetails(request):
 
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect("/")
+    return render(request,'login.html')
 
 def signup_admin(request):
     return render(request,"signup_admin_page.html")
@@ -80,7 +78,7 @@ def advising(request):
      return render(request,'advising.html')
 
 def logout_admin(request):
-    return render(request, 'signup.html')
+    return render(request, 'login.html')
 
 def send_notice(request):
     return render(request,'sendnotice.html')
