@@ -8,6 +8,8 @@ from django.contrib import admin
 app_name = 'student_app'
 urlpatterns = [
     path('', views.login_home,  name='login_home'),
+    path('studentprofile/', views.student_profile, name='student_profile'),
+    path('facultyprofile/', views.faculty_profile, name='faculty_profile'),
     path('main/', views.home, name='main'),
     path('dologin/', views.doLogin, name='dologin'),
     path('adhome/', views.adminview, name='adminview'),

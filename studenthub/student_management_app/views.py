@@ -24,6 +24,12 @@ def login_home(request):
 def home(request):
     return render(request,'home.html')
 
+def student_profile(request):
+    return render(request,'student_profile.html')
+
+def faculty_profile(request):
+    return render(request,'faculty_profile.html')
+
 def doLogin(request):
     if request.method!="POST":
         return HttpResponse("<h2>Method Not Allowed</h2>")

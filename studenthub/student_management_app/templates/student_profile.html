@@ -1,0 +1,190 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+         rel="stylesheet"
+      />
+
+      <link rel="stylesheet" href="{% static 'css/student_profile.css' %}" />
+
+      <title>Student Profile</title>
+   </head>
+   <body>
+      <nav class="navbar">
+         <ul class="navbar-nav">
+            <li class="logo">
+               <a href="#" class="nav-link">
+                  <!-- <span class="link-text logo-text">Student Hub</span> -->
+                  <svg
+                     aria-hidden="true"
+                     focusable="false"
+                     data-prefix="fad"
+                     data-icon="angle-double-right"
+                     role="img"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 448 512"
+                     class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x"
+                  >
+                     <g class="fa-group">
+                        <path
+                           fill="currentColor"
+                           d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z"
+                           class="fa-secondary"
+                        ></path>
+                        <path
+                           fill="currentColor"
+                           d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z"
+                           class="fa-primary"
+                        ></path>
+                     </g>
+                  </svg>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
+                  <span class="link-text">Student Profile</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/presentation 1.svg'%}" alt="" />
+                  <span class="link-text">Faculty Profile</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/x-button 1.svg'%}" alt="" />
+                  <span class="link-text">Course Drop</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/grade 1.svg'%}" alt="" />
+                  <span class="link-text">Grade Overview</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/debit-card 1.svg'%}" alt="" />
+                  <span class="link-text">Payment Status</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/event 1.svg'%}" alt="" />
+                  <span class="link-text">Attendance Records</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/reading 1.svg'%}" alt="" />
+                  <span class="link-text">Major Overview</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/calculator 1.svg'%}" alt="" />
+                  <span class="link-text">Grade Calculator</span>
+               </a>
+            </li>
+
+            <li class="nav-item" id="themeButton">
+               <a href="#" class="nav-link">
+                  <img src="{%static 'images/logout (1) 1.svg'%}" alt="" />
+                  <span class="link-text">Log Out</span>
+               </a>
+            </li>
+         </ul>
+      </nav>
+
+      <main>
+         <div class="body-container">
+            <div class="page-title">
+               <p>Student Profile</p>
+            </div>
+            <div class="pro-pic-section">
+               <div class="pro-pic-section-container">
+                  <div class="pro-pic"><img src="{%static 'images/pro-pic.svg'%}" alt="" /></div>
+                  <div class="name">Rafid Ahmmad</div>
+                  <div class="id">2011237642</div>
+                  <div class="profile-setting">
+                     <a href="#">
+                        <div class="setting-ico">
+                           <img src="{%static 'images/setting 1.svg'%}" alt="" />
+                        </div>
+                        <div class="setting-title">
+                           <p>Profile Setting</p>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+            </div>
+            <div class="general-info-section">
+               <p><strong>General Info</strong></p>
+
+               <p>
+                  Full Name: <span class="name">Rafid Ahmmad</span><br />
+                  Student ID: <span class="id">2011237 6 42</span><br />
+                  Enrolled In: <span class="major">Bachelor of Science in Computer Science and Engineering</span><br />
+                  Curriculum Name: BS in CSE - 130 Credit Curriculum<br />
+                  Entry Item: Spring 2020<br />
+                  Test Pas #: 0009<br />
+                  Current Status: Enrolled<br />
+                  Current CGPA: 00.00<br />
+                  Credit Passed: 00.00<br />
+                  Probation: 0<br />
+                  Major 1: N/A<br />
+                  Major 2: N/A
+               </p>
+            </div>
+            <div class="personal-info-section">
+               <div class="left-personal-info">
+                  <p><strong>Personal Info</strong></p>
+
+                  <p>
+                     Cell Phone: 01551****95<br />
+                     Personal Email: rafid.ahmmad@northsouth.edu<br />
+                     NID: 00230121313<br />
+                     Birth Reg No: 1320123122321<br />
+                     Date of Birth: 9999-99-99<br />
+                     Sex: M
+                  </p>
+               </div>
+               <div class="right-personal-info">
+                  <p>
+                     Citizenship: Bangladeshi<br />
+                     Blood Group: <br />
+                     Marital Status: Single<br />
+                     Mailing Address: 25 Some Random Address, Bashundhara R/A, Dhaka - 1212<br />
+                  </p>
+               </div>
+            </div>
+         </div>
+      </main>
+   </body>
+</html>
