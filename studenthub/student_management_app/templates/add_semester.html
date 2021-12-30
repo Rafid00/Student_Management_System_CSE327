@@ -1,9 +1,7 @@
 {% extends 'base2.html' %}
 {% load static %}
-{% block page_title %}{{page_title}}{% endblock page_title %}
 
 {% block body_block %}
-
 <section class="content">
   <div class="container-fluid">
       <div class="row">
@@ -29,7 +27,6 @@
         </div>
       </div>
     </section>
-
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -40,7 +37,7 @@
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
 
-                    {% include "form_template.html" with messages=messages  form=form button_text="Add Course"%}
+                    {% include "form_template.html" with messages=messages  form=form button_text="Add Semester"%}
                 </div>
                 <!-- /.card -->
 

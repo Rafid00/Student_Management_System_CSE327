@@ -1,64 +1,43 @@
 {% extends 'base2.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
 {% block body_block %}
 
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-          <!-- general form elements -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Add New Semester</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">{{page_title}}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for session in sessions %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{session.start_year}}</td>
+                                    <td>{{session.end_year}}</td>
+                                    <td><a href="{% url 'student_app:edit_semester' session.id %}" class="btn btn-primary">Edit</a> -  </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form role="form" action="{% url 'student_app:add_semester_save' %}" method="post">
-                {% csrf_token %}
-              <div class="card-body">
-                <div class="form-group">
-                    <label>Semester Name</label>
-                    <input type="text" class="form-control" name="session_name" placeholder="Enter Semester name">
-                  </div>
-                <div class="form-group">
-                  <label>Semester Start date </label>
-                  <input type="date" class="form-control" name="session_start" placeholder="Enter Session Start Year">
-                </div>
-
-               <div class="form-group">
-                  <label>Semester End date  </label>
-                  <input type="date" class="form-control" name="session_end" placeholder="Enter Session End Year">
-                </div>
-
-
-                 <div class="form-group">
-                    {% if messages %}
-                      {% for message in messages %}
-                      {% if message.tags == 'error' %}
-                      <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
-                      {% endif %}
-                      {% if message.tags == 'success' %}
-                      <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
-                      {% endif %}
-                      {% endfor %}
-                    {% endif %}
-                  </div>
-
-              </div>
-              <!-- /.card-body -->
-
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-block">Add Semester</button>
-              </div>
-            </form>
-          </div>
-          <!-- /.card -->
-
-
-
-        </div>
         </div>
     </div>
-  </section>
-
-
+</section>
 {% endblock %}
