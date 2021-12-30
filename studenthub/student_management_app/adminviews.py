@@ -411,7 +411,7 @@ def admin_view_attendance(request):
         'page_title': 'View Attendance'
     }
 
-    return render(request, "admin_view_attendance.html", context)
+    return render(request, "admin_attendance_view.html", context)
 
 
 @csrf_exempt
