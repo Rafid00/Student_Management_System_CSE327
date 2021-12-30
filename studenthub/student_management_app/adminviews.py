@@ -20,6 +20,7 @@ def admin_home(request):
     subjects = Subject.objects.all()
     total_subject = subjects.count()
     total_course = Course.objects.all().count()
+    current_semester = Semester.objects.name(pk=id)
     attendance_list = Attendance.objects.filter(subject__in=subjects)
     total_attendance = attendance_list.count()
     attendance_list = []
@@ -38,7 +39,7 @@ def admin_home(request):
         'attendance_list': attendance_list
 
     }
-    return render(request, 'admin_view.html', context)
+    return render(request, 'admin_home.html', context)
 
 
 def add_staff(request):

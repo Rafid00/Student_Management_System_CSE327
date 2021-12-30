@@ -23,14 +23,14 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     {% endblock custom_css %}
-
+    {% if request.user.user_type == '1' %}
     <div class="container-fluid">
         <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>{{ student_count }}</h3>
+              <h3>{{user.total_students}}</h3>
 
               <p>Total Students</p>
             </div>
@@ -45,7 +45,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>{{ staff_count }}</h3>
+              <h3>{{total_staff}}</h3>
 
               <p>Total Staffs</p>
             </div>
@@ -60,7 +60,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>{{ course_count }}</h3>
+              <h3>{{total_course}}</h3>
 
               <p>Total Course</p>
             </div>
@@ -75,7 +75,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ staff_count }}</h3>
+                <h3>{{ current_semester }}</h3>
   
                 <p>Current Semester</p>
               </div>
@@ -123,7 +123,7 @@
               </div>
             </div>
         </div>
-        
+  {% endif %}      
   </section>
 
 
