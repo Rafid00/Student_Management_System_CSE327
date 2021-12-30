@@ -1,0 +1,418 @@
+:root {
+   font-size: 16px;
+   font-family: "Open Sans";
+   --text-primary: #b6b6b6;
+   --text-secondary: #ececec;
+   --bg-primary: #23232e;
+   --bg-secondary: #141418;
+   --transition-speed: 600ms;
+}
+
+body {
+   color: black;
+   margin: 0;
+   padding: 0;
+   font-family: open-sans;
+   background-image: url("images/bg-img.svg");
+   background-size: 50%;
+   background-attachment: fixed;
+}
+
+body::-webkit-scrollbar {
+   width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+   background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+   background: #6649b8;
+}
+
+main {
+   margin-left: 5rem;
+   padding: 1rem;
+   font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+   position: fixed;
+   background-color: var(--bg-primary);
+   transition: width 600ms ease;
+   overflow: hidden;
+   overflow-y: scroll;
+   z-index: 999;
+}
+
+.navbar::-webkit-scrollbar {
+   width: 0;
+   background: transparent;
+}
+
+.navbar-nav {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 100%;
+}
+
+.nav-item {
+   width: 100%;
+}
+
+.nav-item:last-child {
+   margin-top: auto;
+}
+
+.nav-link {
+   display: flex;
+   align-items: center;
+   height: 4rem;
+   color: var(--text-primary);
+   text-decoration: none;
+   filter: grayscale(100%) opacity(0.7);
+   transition: var(--transition-speed);
+}
+
+.nav-link:hover {
+   filter: grayscale(0%) opacity(1);
+   background: var(--bg-secondary);
+   color: var(--text-secondary);
+}
+
+.link-text {
+   display: none;
+   margin-left: 0.2rem;
+   margin-right: 1.6rem;
+}
+
+.nav-link svg {
+   width: 2rem;
+   min-width: 2rem;
+   margin: 0 1.5rem;
+}
+
+.nav-link img {
+   width: 1.8rem;
+   min-width: 1.8rem;
+   margin: 0 1.5rem;
+}
+
+.fa-primary {
+   color: #ff7eee;
+}
+
+.fa-secondary {
+   color: #df49a6;
+}
+
+.fa-primary,
+.fa-secondary {
+   transition: var(--transition-speed);
+}
+
+.logo {
+   font-weight: bold;
+   text-transform: uppercase;
+   margin-bottom: 1rem;
+   text-align: center;
+   color: var(--text-secondary);
+   background: var(--bg-secondary);
+   font-size: 1.5rem;
+   letter-spacing: 0.3ch;
+   width: 100%;
+}
+
+.logo svg {
+   transform: rotate(0deg);
+   transition: var(--transition-speed);
+}
+
+.logo-text {
+   display: inline;
+   position: absolute;
+   left: -999px;
+   transition: var(--transition-speed);
+   margin-left: 1.5rem;
+   font-size: 13px;
+}
+
+.navbar:hover .logo svg {
+   transform: rotate(-180deg);
+}
+
+@media only screen and (max-width: 600px) {
+   .navbar {
+      bottom: 0;
+      width: 100vw;
+      height: 5rem;
+   }
+
+   .logo {
+      display: none;
+   }
+
+   .navbar-nav {
+      flex-direction: row;
+   }
+
+   .nav-link {
+      justify-content: center;
+   }
+
+   main {
+      margin: 0;
+   }
+}
+
+@media only screen and (min-width: 600px) {
+   .navbar {
+      top: 0;
+      width: 5rem;
+      height: 100vh;
+   }
+
+   .navbar:hover {
+      width: 16rem;
+   }
+
+   .navbar:hover .link-text {
+      display: inline;
+   }
+
+   .navbar:hover .logo svg {
+      margin-left: 11rem;
+   }
+
+   .navbar:hover .logo-text {
+      left: 0px;
+   }
+}
+
+.dark {
+   --text-primary: #b6b6b6;
+   --text-secondary: #ececec;
+   --bg-primary: #23232e;
+   --bg-secondary: #141418;
+}
+
+.light {
+   --text-primary: #1f1f1f;
+   --text-secondary: #000000;
+   --bg-primary: #ffffff;
+   --bg-secondary: #e4e4e4;
+}
+
+.solar {
+   --text-primary: #576e75;
+   --text-secondary: #35535c;
+   --bg-primary: #fdf6e3;
+   --bg-secondary: #f5e5b8;
+}
+
+.theme-icon {
+   display: none;
+}
+
+.dark #darkIcon {
+   display: block;
+}
+
+.light #lightIcon {
+   display: block;
+}
+
+.solar #solarIcon {
+   display: block;
+}
+
+/* main */
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+html {
+   font-size: 62.5%;
+}
+
+body {
+   margin: 0;
+   font-family: "Open Sans", sans-serif;
+   overflow-x: hidden;
+}
+
+input,
+textarea,
+button {
+   font-family: inherit;
+}
+
+/* LOGIN START */
+
+.login-container {
+   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.25);
+   width: 450px;
+   height: 600px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: #ffffff;
+   text-transform: uppercase;
+}
+
+.login-container label {
+   font-size: 0.9rem;
+   display: block;
+   margin-bottom: 15px;
+}
+
+.form-inputs input {
+   border: none;
+   outline: none;
+   height: 40px;
+   width: 350px;
+   min-width: 250px;
+   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.25);
+   padding: 0 15px 0 15px;
+}
+
+.login-container input {
+   margin-bottom: 35px;
+}
+
+.login-container .title {
+   font-size: 1.4rem;
+}
+
+.keep-logged-in {
+   width: 350px;
+}
+
+.login-container input[name="keep-logged-in"] {
+   border: none;
+   outline: none;
+   width: 20px;
+   height: 20px;
+   margin-left: 0;
+   margin-top: 0;
+   margin-right: 6px;
+}
+
+label[for="keep-logged-in"] {
+   display: inline-block;
+   vertical-align: top;
+}
+
+.submit-btn button {
+   border: none;
+   outline: none;
+   width: 350px;
+   background: linear-gradient(90deg, rgba(67, 166, 145, 0.5) -28.11%, rgba(112, 255, 225, 0.5) 79.19%), #43a691;
+   color: white;
+   cursor: pointer;
+   height: 40px;
+   border-radius: 5px;
+   font-size: 1rem;
+   font-weight: 500;
+   margin-bottom: 35px;
+}
+
+.call-reg {
+   width: 350px;
+   font-size: 1.4rem;
+}
+
+.call-register {
+   font-weight: 700;
+   color: #0038ff;
+   cursor: pointer;
+}
+
+.call-reg p {
+   margin: 0;
+}
+
+.call-register:hover {
+   border-bottom: 1px solid #0038ff;
+}
+
+.section {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 91vh;
+   gap: 60px;
+}
+
+/* REGISTRATION FORM */
+
+.registration-container {
+   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.25);
+   width: 600px;
+   height: 600px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.registration-container input {
+   margin-bottom: 20px;
+}
+
+.registration-container input:last-child {
+   margin-bottom: 30px;
+}
+
+.registration-container label {
+   margin-bottom: 5px;
+}
+
+.registration-container .submit-btn button {
+   margin-bottom: 0;
+}
+
+.registration-container .title p {
+   margin: 0;
+   transform: translateY(-30px);
+}
+
+.form-container-2 {
+   display: none;
+}
+
+@keyframes slideIn {
+   0% {
+      transform: translateX(500px);
+      opacity: 50%;
+   }
+
+   100% {
+      transform: translateX(0);
+      opacity: 100%;
+   }
+}
+
+.form-container-2 {
+   animation: slideIn-3 1s both;
+}
+
+@keyframes slideIn-3 {
+   0% {
+      transform: translateX(400px);
+      opacity: 50%;
+   }
+
+   100% {
+      transform: translateX(0);
+      opacity: 100%;
+   }
+}
