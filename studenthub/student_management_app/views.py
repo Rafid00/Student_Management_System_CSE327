@@ -39,6 +39,7 @@ def doLogin(request, **kwargs):
         else:
             messages.error(request, "Invalid details")
             return redirect("/")
+    
 
 
 
@@ -47,4 +48,8 @@ def logout_user(request):
         logout(request)
     return redirect("/")
 
+
+def studentProfile(request):
+    if request.user != None:
+        return render(request,'student_profile.html')
 
