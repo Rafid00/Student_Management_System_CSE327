@@ -41,6 +41,26 @@ def admin_home(request):
     }
     return render(request, 'admin_home.html', context)
 
+def send_notice(request):
+    form = NoticeForm(request.POST or None)
+    context = {'form':form, 'page_title':'Send Notice'}
+    if request.method == 'POST':
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            description = form.cleaned_data.get('description')
+            try:
+                notice = Notice()
+                notice.title = title
+                notice.description = description
+                notice.save()
+                messages.success(request, "Successfully sent notice")
+                return redirect(reverse('student_app:send_notice'))
+            except:
+                messages.error(request, "Could Not Send Notice")
+        else:
+            messages.error(request, "Could Not Send Notice")
+
+    return render(request, 'send_notice.html', context)
 
 def add_staff(request):
     form = StaffForm(request.POST or None, request.FILES or None)
