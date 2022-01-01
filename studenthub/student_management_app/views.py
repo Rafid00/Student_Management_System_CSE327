@@ -151,3 +151,27 @@ def home(request):
 
         if request.POST.get("passed_credits") != "":
             credit_passed = int(request.POST.get("passed_credits"))
+
+            else:
+            credit_passed = 0
+        if request.POST.get("prev_cgpa") != "":
+            prev_cgpa = request.POST.get("prev_cgpa")
+            prev_cgpa = float(prev_cgpa.replace(' ', ''))
+        else:
+            prev_cgpa = 0
+
+        credits = []
+        for i in range(1, 6):
+            if request.POST.get(("credits" + str(i))) != "":
+                credits.append(int(request.POST.get(("credits" + str(i)))))
+
+        grades = []
+        for i in range(1, 6):
+            if request.POST.get(("grade" + str(i))) != "":
+                grades.append(gradePointCalc(request.POST.get(("grade" + str(i)))))
+
+        print("credits", credits)
+        print("grades", grades)
+
+        cg_credit_sum = 0 
+
