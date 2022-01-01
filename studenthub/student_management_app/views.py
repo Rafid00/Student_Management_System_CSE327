@@ -51,6 +51,7 @@ def logout_user(request):
     if request.user != None:
         logout(request)
     return redirect("/")
+<<<<<<< HEAD
 
 
 def profile(request):
@@ -63,3 +64,5 @@ def profile(request):
     if request.user != None:
         return render(request,'profile.html', {'email': user.email})
 
+=======
+>>>>>>> main
