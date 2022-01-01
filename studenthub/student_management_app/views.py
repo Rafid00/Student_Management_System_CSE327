@@ -119,4 +119,8 @@ def profile(request):
     return render(request, "profile.html", {'first_name':first_name,'last_name':last_name,'gender':g,'image':image,'address':address,'email':email_id})
        
         
-     
+def gradePointCalc(grade):
+	if(grade == "A"):
+		gradePoint = 4
+	elif ( grade == "A-"):
+		gradePoint = 3.5
