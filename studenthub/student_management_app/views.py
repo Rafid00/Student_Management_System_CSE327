@@ -133,3 +133,12 @@ def gradePointCalc(grade):
         gradePoint = 2.7
     elif (grade == "C+"):
         gradePoint = 2.3
+    elif (grade == "C"):
+        gradePoint = 2
+    elif (grade == "C-"):
+        gradePoint = 1.7
+    elif (grade == "D"):
+        gradePoint = 1
+    else:
+        gradePoint = 0
+    return gradePoint
