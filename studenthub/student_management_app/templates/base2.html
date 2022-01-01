@@ -327,10 +327,10 @@
         <span>Add Semester</span>
       </a>
     </li>
-     <li>
-        <a href="#">
+      <li>
+        <a href="{% url 'student_app:send_notice' %}">
           <svg>
-            <use xlink:href="#comments"></use>
+            <use xlink:href="#notice"></use>
           </svg>
           <span>Send notice</span>
         </a>
@@ -370,6 +370,14 @@
                 <use xlink:href="#edit"></use>
               </svg>
               <span>Manage Semester</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'student_app:admin_view_attendance' %}">
+              <svg>
+                <use xlink:href="#edit"></use>
+              </svg>
+              <span>view attendance</span>
             </a>
           </li>
           <li>

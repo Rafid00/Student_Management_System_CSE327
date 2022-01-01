@@ -5,9 +5,6 @@ from django.db.models.signals import post_save
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
-
-
 class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
         email = self.normalize_email(email)
@@ -117,6 +114,15 @@ class AttendanceReport(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class Notice(models.Model):
+    file = models.FileField()
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.title   
 
 class NotificationStaff(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)

@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.forms import Form
 from django.forms.widgets import DateInput, TextInput
 
 from .models import *
@@ -83,7 +84,6 @@ class StaffForm(CustomUserForm):
         fields = CustomUserForm.Meta.fields + \
             ['course' ]
 
-
 class CourseForm(FormSettings):
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
@@ -92,6 +92,13 @@ class CourseForm(FormSettings):
         fields = ['name']
         model = Course
 
+class NoticeForm(FormSettings):
+    def __init__(self, *args, **kwargs):
+        super(NoticeForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        fields = ['title','description']
+        model = Notice
 
 class SubjectForm(FormSettings):
 
