@@ -45,9 +45,28 @@
 		}
 	</style>
 
-    
+
 </head>
 <body>
+
+<h1>Calculate your CGPA </h1>
+
+	<div id="main-wrapper">
+		<form action="" method="post" class="form">
+			{% csrf_token %}
+
+	    	<table id="cgpa-table">
+			  <tr>
+			    <th>Course</th>
+			    <th>Credit</th>
+			    <th>Grade</th>
+			  </tr>
+
+			  <tr>
+			    <td> Previous </td>
+			    <td> <input type="number" placeholder="credit passed" name="passed_credits"> </td>
+			    <td> <input type="number" step="0.01" name="prev_cgpa"> </td>
+			  </tr>
 
 </body>
 </html>
