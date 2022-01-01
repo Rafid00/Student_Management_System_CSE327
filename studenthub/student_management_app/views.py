@@ -142,3 +142,12 @@ def gradePointCalc(grade):
     else:
         gradePoint = 0
     return gradePoint
+
+
+# Create your views here.
+def home(request):
+    if request.method == "POST":
+        cg_data = request.POST
+
+        if request.POST.get("passed_credits") != "":
+            credit_passed = int(request.POST.get("passed_credits"))
