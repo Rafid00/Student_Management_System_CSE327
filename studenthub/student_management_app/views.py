@@ -61,5 +61,5 @@ def profile(request):
     # username=student.email
     # username=user.email
     if request.user != None:
-        return render(request,'profile.html', {'email': user.email, 'fname': user.first_name, 'lname': user.last_name, 'user_type': user.user_type})
+        return render(request,'profile.html', {'email': user.email})
 
