@@ -35,5 +35,5 @@ urlpatterns = [
     path('logout_user/', views.logout_user, name="logout_user"),
     path("check_email_availability",adminviews.check_email_availability,
          name="check_email_availability"),
-    path('studentprofile/', views.studentProfile, name='studentProfile')
+    path('profile/', views.profile, name='profile')
 ]
