@@ -41,7 +41,8 @@
             <img src="{% static 'images/undraw_mathematics.svg' %}" alt="" />
          </div>
          <div class="form-container">
-            <form action="#" method="post">
+            <form action="{% url 'student_app:dologin' %}" method="post">
+               {% csrf_token %}
                <div class="login-container">
                   <div class="title">
                      <p>STUDENT PORTAL</p>

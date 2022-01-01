@@ -293,6 +293,7 @@ main {
 
 .pro-pic img {
    width: 100%;
+   border-radius: 50%;
 }
 
 .general-info-section {
@@ -307,6 +308,10 @@ main {
 
 .right-personal-info {
    grid-column: 2/5;
+}
+
+.pro-pic{
+   border-radius: 50%;
 }
 
 .pro-pic-section,
