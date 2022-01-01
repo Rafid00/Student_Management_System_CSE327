@@ -173,5 +173,14 @@ def home(request):
         print("credits", credits)
         print("grades", grades)
 
-        cg_credit_sum = 0 
+        cg_credit_sum = 0
+
+        for i in range(len(credits)):
+            temp = grades[i] * credits[i]
+            cg_credit_sum += temp
+        new_cg = (float(prev_cgpa) * int(credit_passed) + float(cg_credit_sum)) / (int(credit_passed) + sum(credits))
+        context = {"cg_data": cg_data, "new_cg": new_cg}
+        return render(request, "cg_calculator/cg_calculator.html", context)
+    context = {}
+    return render(request, "cg_calculator/cg_calculator.html", context)
 
