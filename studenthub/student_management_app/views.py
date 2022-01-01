@@ -145,7 +145,7 @@ def gradePointCalc(grade):
 
 
 # Create your views here.
-def home(request):
+def Calculator_home(request):
     if request.method == "POST":
         cg_data = request.POST
 
