@@ -135,11 +135,11 @@
             <div class="notice-board">
                <div class="title"><h2>Brief Profile</h2></div>
                <ul>
-                  <li><a href="">Final schedule will be published ..</a></li>
-                  <li><a href="">Final schedule will be published ..</a></li>
-                  <li><a href="">Final schedule will be published ..</a></li>
-                  <li><a href="">Final schedule will be published ..</a></li>
-                  <li><a href="">Final schedule will be published ..</a></li>
+                  {% for notice in notices %}
+                     {% if notice.counter != 5 %}
+                     <li><a href="">{{ notice.title }}</a></li>
+                     {% endif %}
+                  {% endfor %}
                   <div class="view-notice">
                      <a href="{% url 'student_app:notice_overview' %}">View More Notice</a>
                   </div>
