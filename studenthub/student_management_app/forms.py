@@ -101,7 +101,6 @@ class NoticeForm(FormSettings):
         model = Notice
 
 class SubjectForm(FormSettings):
-
     def __init__(self, *args, **kwargs):
         super(SubjectForm, self).__init__(*args, **kwargs)
 
@@ -152,3 +151,17 @@ class EditResultForm(FormSettings):
     class Meta:
         model = StudentResult
         fields = ['session_year', 'subject', 'student', 'test', 'exam']
+
+
+class PaymentForm(FormSettings):
+    def __init__(self, *args, **kwargs):
+        super(PaymentForm, self).__init__(*args, **kwargs)
+     
+    class Meta:
+        fields = ['amount']
+        model = StudentPaymentStatus
+
+    
+        
+  
+     

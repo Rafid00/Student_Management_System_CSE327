@@ -1,3 +1,4 @@
+{% load static %} {% if request.user.user_type == '3' %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -12,7 +13,7 @@
          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
          rel="stylesheet"
       />
-      <link rel="stylesheet" href="student_home.css" />
+      <link rel="stylesheet" href="{% static 'css/student_home.css' %}" />
       <title>Student student_home</title>
    </head>
    <body>
@@ -49,63 +50,63 @@
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/graduating-student 1.svg" alt="" />
+                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
                   <span class="link-text">Student Profile</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/presentation 1.svg" alt="" />
+                  <img src="{%static 'images/presentation 1.svg'%}" alt="" />
                   <span class="link-text">Faculty Profile</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/x-button 1.svg" alt="" />
+                  <img src="{%static 'images/x-button 1.svg'%}" alt="" />
                   <span class="link-text">Course Drop</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/grade 1.svg" alt="" />
+                  <img src="{%static 'images/grade 1.svg'%}" alt="" />
                   <span class="link-text">Grade Overview</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/debit-card 1.svg" alt="" />
+                  <img src="{%static 'images/debit-card 1.svg'%}" alt="" />
                   <span class="link-text">Payment Status</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/event 1.svg" alt="" />
+                  <img src="{%static 'images/event 1.svg'%}" alt="" />
                   <span class="link-text">Attendance Records</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/reading 1.svg" alt="" />
+                  <img src="{%static 'images/reading 1.svg'%}" alt="" />
                   <span class="link-text">Major Overview</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/calculator 1.svg" alt="" />
+                  <img src="{%static 'images/calculator 1.svg'%}" alt="" />
                   <span class="link-text">Grade Calculator</span>
                </a>
             </li>
 
             <li class="nav-item" id="themeButton">
                <a href="#" class="nav-link">
-                  <img src="images/logout (1) 1.svg" alt="" />
+                  <img src="{%static 'images/logout (1) 1.svg'%}" alt="" />
                   <span class="link-text">Log Out</span>
                </a>
             </li>
@@ -114,37 +115,49 @@
 
       <main>
          <div class="body-container">
-            <div class="pro-pic-section">
-               <div class="pro-pic-section-container">
-                  <div class="pro-pic-sec-title"><p>Brief Profile</p></div>
-                  <div class="pro-pic"><img src="images/pro-pic.svg" alt="" /></div>
-                  <div class="name">Rafid Ahmmad</div>
-                  <div class="id">2011237642</div>
-                  <div class="profile-setting">
-                     <p>Major : Computer Science & Engineering</p>
-                     <p>Credit Passed : 60</p>
-                     <p>Current Grade : 2.5</p>
-                     <p>Email : rafid.ahmmad@northsouth.edu</p>
-                     <p>Phone : 015512***95</p>
-                  </div>
+            <div class="brief-profile">
+               <div class="title"><h2>Brief Profile</h2></div>
+               <div class="pro-pic">
+                  <img src="{%static 'images/pro-pic.svg'%}" alt="" />
+               </div>
+               <div class="pro-pic-des">
+                  <p>Rafid Ahmmad</p>
+                  <p>2011237642</p>
+               </div>
+               <div class="student-des">
+                  <p>Major : Computer Science & Engineering</p>
+                  <p>Credit Passed : 60</p>
+                  <p>Current Grade : 2.5</p>
+                  <p>Email : rafid.ahmmad@northsouth.edu</p>
+                  <p>Phone : 015512***95</p>
                </div>
             </div>
-            <div class="general-info-section">
-               <p>Notice Board</p>
+            <div class="notice-board">
+               <div class="title"><h2>Brief Profile</h2></div>
                <ul>
-                  <li><a href="#">Final schedule will be published ..</a></li>
-                  <li><a href="#">Final schedule will be published ..</a></li>
-                  <li><a href="#">Final schedule will be published ..</a></li>
-                  <li><a href="#">Final schedule will be published ..</a></li>
-                  <li><a href="#">Final schedule will be published ..</a></li>
+                  {% for notice in notices %}
+                     {% if notice.counter != 5 %}
+                     <li><a href="">{{ notice.title }}</a></li>
+                     {% endif %}
+                  {% endfor %}
+                  <div class="view-notice">
+                     <a href="{% url 'student_app:notice_overview' %}">View More Notice</a>
+                  </div>
                </ul>
             </div>
-            <div class="personal-info-section">
-               <div class="left-personal-info">
-                  <p>Contact Support Team</p>
-               </div>
+            <div class="contact-sup-team">
+               <img src="{%static 'images/contact 1.svg'%}" alt="" />
+               <a href="">Contact Support Team</a>
             </div>
+         </div>
+         <div class="body-container">
+            {% block stc %}
+            
+            {% endblock %}
          </div>
       </main>
    </body>
 </html>
+
+{% endif %}
+

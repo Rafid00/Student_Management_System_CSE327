@@ -1,4 +1,4 @@
-{% extends 'base2.html' %}
+{% extends 'staff_home.html' %}
 {% load static %}
 {% block page_title %}{{page_title}}{% endblock page_title %}
 {% block body_block %}
@@ -16,26 +16,21 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="card-body">
-
-
-
                         <div class="form-group">
                             <label>Subject</label>
                             <select name="subject" class="form-control" id='subject'>
                                 <option value="">----</option>
                                 {% for subject in subjects  %}
-                                <option value="{{subject.id}}">{{subject.name}}</option>
+                                <option value="{{subject.id}}">{{subject.course}}</option>
                                 {% endfor %}
                             </select>
                         </div>
-
-
                         <div class="form-group">
-                            <label>Session Year</label>
+                            <label>Semester</label>
                             <select name="session" id='session' class="form-control">
                                 <option value="">----</option>
                                 {% for session in sessions  %}
-                                <option value="{{session.id}}">{{session}} </option>
+                                <option value="{{session.id}}">{{session.name}} </option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -81,7 +76,7 @@ if (subject.length  == 0 || session.length == 0){
     return false;
 }
             $.ajax({
-                url: "{% url 'get_students' %}",
+                url: "{% url 'student_app:get_students' %}",
                 type: 'POST',
                 data: {
                     subject: subject,
@@ -124,7 +119,7 @@ if (subject.length  == 0 || session.length == 0){
                 }
                 student_data = JSON.stringify(student_data)
                 $.ajax({
-                    url: "{% url 'save_attendance' %}",
+                    url: "{% url 'student_app:save_attendance' %}",
                     type: 'POST',
                     data: {
                         date: attendance_date,

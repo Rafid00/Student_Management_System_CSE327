@@ -2,12 +2,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <style>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
 		#main-wrapper{
 			margin: 2rem 20%;
 		}
@@ -47,16 +48,14 @@
 		}
 	</style>
 
-
 </head>
 <body>
-
-<h1>Calculate your CGPA </h1>
+	<h1>Calculate your CGPA </h1>
 
 	<div id="main-wrapper">
 		<form action="" method="post" class="form">
 			{% csrf_token %}
-
+	    	
 	    	<table id="cgpa-table">
 			  <tr>
 			    <th>Course</th>
@@ -69,7 +68,8 @@
 			    <td> <input type="number" placeholder="credit passed" name="passed_credits"> </td>
 			    <td> <input type="number" step="0.01" name="prev_cgpa"> </td>
 			  </tr>
-                <tr>
+
+			  <tr>
 			    <td> <input type="text" name="course1"> </td>
 			    <td> <input type="number" name="credits1"> </td>
 			    <td> <input type="text" name="grade1"> </td>
@@ -87,7 +87,7 @@
 			    <td> <input type="text" name="grade3"> </td>
 			  </tr>
 
-                <tr>
+			  <tr>
 			    <td> <input type="text" name="course4"> </td>
 			    <td> <input type="number" name="credits4"> </td>
 			    <td> <input type="text" name="grade4"> </td>
@@ -106,8 +106,10 @@
 
 		<h1> Cgpa:  {{new_cg}} </h1>
 
-
+		
 	</div>
 
+
+	
 </body>
 </html>

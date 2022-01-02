@@ -114,15 +114,13 @@
                 return false
             }
             $.ajax({
-                url: "{% url 'get_attendance' %}",
+                url: "{% url 'get_admin_attendance' %}",
                 type: 'POST',
                 data:{
                     subject:subject,
                     session:session
                 }
-            
             }
-
             ).done(function(response){
                 var json_data = JSON.parse(response)
                 if (json_data.length > 0){
@@ -168,7 +166,7 @@ if (attendance_date.length  == 0){
     return false;
 }
             $.ajax({
-                url: "{% url 'get_admin_attendance' %}",
+                url: "{% url 'student_app:get_admin_attendance' %}",
                 type: 'POST',
                 data: {
                     attendance_date_id:attendance_date,

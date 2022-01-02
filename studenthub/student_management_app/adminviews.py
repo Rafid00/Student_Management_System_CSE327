@@ -180,6 +180,7 @@ def add_subject(request):
     return render(request, 'add_subject.html', context)
 
 
+
 def manage_staff(request):
     allStaff = CustomUser.objects.filter(user_type=2)
     context = {
@@ -187,7 +188,6 @@ def manage_staff(request):
         'page_title': 'Manage Staff'
     }
     return render(request, "manage_faculty.html", context)
-
 
 def manage_student(request):
     students = CustomUser.objects.filter(user_type=3)
@@ -262,7 +262,7 @@ def edit_staff(request, staff_id):
     else:
         user = CustomUser.objects.get(id=staff_id)
         staff = Staff.objects.get(id=user.id)
-        return render(request, "edit_faculty.html", context)
+        return render(request, "edit_staff.html", context)
 
 
 def edit_student(request, student_id):
@@ -287,21 +287,7 @@ def edit_student(request, student_id):
             passport = request.FILES.get('profile_pic') or None
             try:
                 user = CustomUser.objects.get(id=student.admin.id)
-                if passport != None:
-                    fs = FileSystemStorage()
-                    filename = fs.save(passport.name, passport)
-                    passport_url = fs.url(filename)
-                    user.profile_pic = passport_url
-                user.username = username
-                user.email = email
-                if password != None:
-                    user.set_password(password)
-                user.first_name = first_name
-                user.last_name = last_name
-                student.session = session
-                user.gender = gender
-                user.address = address
-                student.course = course
+                
                 user.save()
                 student.save()
                 messages.success(request, "Successfully Updated")
@@ -457,6 +443,37 @@ def get_admin_attendance(request):
     except Exception as e:
         return None
 
+def payment_status(request):
+    students = CustomUser.objects.filter(user_type=3)
+    context = {
+        'students': students,
+        'page_title': 'Add payment'
+    }
+    return render(request, "add_payment.html", context)
+
+def update_payment_status(request,student_id):
+    student = get_object_or_404(Student, id=student_id)
+    form = PaymentForm(request.POST or None, instance=student)
+    context = {
+        'form': form,
+        'student_id': student_id,
+        'page_title': 'Update Payment'
+    }
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            try:
+                messages.success(request, "Payments Updated")
+                return redirect(reverse('student_app:update_payment', args=[student_id]))
+            except Exception as e:
+                messages.error(request, "Payments Could Not Be Updated " + str(e))
+                return render(request, "update_payment.html", context)
+        else:
+            messages.error(request, "Invalid Form Submitted ")
+            return render(request, "update_payment.html", context)
+
+    else:
+        return render(request, "update_payment.html", context)
 
 def admin_view_profile(request):
     admin = get_object_or_404(Admin, admin=request.user)
