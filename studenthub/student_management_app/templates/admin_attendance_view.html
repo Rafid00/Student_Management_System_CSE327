@@ -114,15 +114,13 @@
                 return false
             }
             $.ajax({
-                url: "{% url 'get_attendance' %}",
+                url: "{% url 'get_admin_attendance' %}",
                 type: 'POST',
                 data:{
                     subject:subject,
                     session:session
                 }
-            
             }
-
             ).done(function(response){
                 var json_data = JSON.parse(response)
                 if (json_data.length > 0){
