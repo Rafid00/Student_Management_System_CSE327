@@ -7,9 +7,13 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.decorators.csrf import csrf_exempt
 import math
 from .EmailBackEnd import EmailBackEnd
+<<<<<<< Updated upstream
 from .models import *
 from .forms import *
 from django.core.files.storage import FileSystemStorage
+=======
+
+>>>>>>> Stashed changes
 # Create your views here.
 
 
@@ -22,6 +26,8 @@ def login_home(request):
         else:
             return redirect(reverse("student_app:profile"))
     return render(request, 'login.html')
+
+
 
 
 def doLogin(request, **kwargs):

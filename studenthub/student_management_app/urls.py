@@ -18,9 +18,14 @@ urlpatterns = [
     path('addstd/', adminviews.add_student, name='add_student'),
     path('addfac/', adminviews.add_staff, name='add_faculty'),
     path('sendnotice/', adminviews.send_notice, name='send_notice'),
+<<<<<<< Updated upstream
     path("get_attendance/", adminviews.get_attendance, name='get_attendance'),
     path("view_attendance/", adminviews.admin_view_attendance, name="admin_view_attendance",),
     path("fetch_attendance/", adminviews.get_admin_attendance, name='get_admin_attendance'),
+=======
+    path('view_attendance/', adminviews.admin_view_attendance, name="admin_attendance_view",),
+    path('fetch_attendance/', adminviews.get_admin_attendance, name='get_admin_attendance'),
+>>>>>>> Stashed changes
     path('Logout/', views.logout_user, name='logout_admin'),
     path('add_course/',adminviews.add_course,name='add_course'),
     path('add_student/', adminviews.add_student,name="add_student_save"),
