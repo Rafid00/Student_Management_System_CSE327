@@ -273,6 +273,6 @@ def grade_overview(request):
     return render(request,"grade_overview.html")
 
 def major_overview (request):
-    contex={'courses':['cse 231','cse 225','cse 115']}
-    return render(request,"major_overview.html",contex)
+    context={'courses':[]}
+    return render(request,"major_overview.html",context)
 

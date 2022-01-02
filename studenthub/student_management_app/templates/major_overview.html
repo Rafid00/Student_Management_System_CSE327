@@ -362,14 +362,14 @@ main {
            </li>
 
            <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{% url 'student_app:cgpa_calculator' %}" class="nav-link">
                  <img src="{%static 'images/calculator 1.svg'%}" alt="" />
                  <span class="link-text">Grade Calculator</span>
               </a>
            </li>
 
            <li class="nav-item" id="themeButton">
-              <a href="#" class="nav-link">
+              <a href="{% url  'student_app:logout_user' %}" class="nav-link">
                  <img src="{%static 'images/logout (1) 1.svg'%}" alt="" />
                  <span class="link-text">Log Out</span>
               </a>
@@ -378,27 +378,23 @@ main {
      </nav>
 
 
-	<div id="main-wrapper">	
+	<div id="main-wrapper" style="display:flex; flex-direction: column;justify-content: center;align-items: center;">	
 	    	<table id="course-table">
-			  <tr>
-			    <th>courses</th>
-			    
-			  </tr>
-
-
 			  
 			    
-			    {% for course in courses  %}
-                <tr><td> {{course}} </td></tr>
-			 	 {% endfor %}
-			   
+                    
+			   <tr><img src="{%static 'images/degreeplan.png'%}" alt="" />
+                <img src="{%static 'images/prereq.png'%}" alt="" /> 
+                <img src="{%static 'images/prereq2.png'%}" alt="" /> 
+            </tr>
+
 			  
 
 			</table>
 		
 	</div>
 
-
+    
 	
 </body>
 </html>
