@@ -139,7 +139,7 @@ def gradePointCalc(grade):
 
 
 # Create your views here.
-<<<<<<< HEAD
+
 # def Calculator_home(request):
 #     if request.method == "POST":
 #         cg_data = request.POST
@@ -198,7 +198,7 @@ def get_attendance(request):
     except Exception as e:
         return None
 
-=======
+
 def cgpa_calculator(request):
     if request.method == "POST":
         cg_data = request.POST
@@ -222,7 +222,7 @@ def cgpa_calculator(request):
         for i in range(1, 6):
             if request.POST.get(("grade" + str(i))) != "":
                 grades.append(gradePointCalc(request.POST.get(("grade" + str(i)))))
->>>>>>> a017bfb534d0057b4eebb43204a02b11b0d3f8a5
+ 
 
         print("credits", credits)
         print("grades", grades)
@@ -259,14 +259,9 @@ def student_home(request):
     return render(request, "student_home.html", context)
 
 def notice_view(request):
-<<<<<<< HEAD
-    notice = Notice.objects.all()
-    context = {'notices':notice,
-=======
     
     notices = Notice.objects.all()
     context = {'notices':notices,
->>>>>>> 82efe47fa1996c64614113973bd2af9b7278e2d3
                 'page_title':'Notice Overview'
                 }
     return render(request, "notice_overview.html", context)
