@@ -158,4 +158,73 @@ def staff_profile(request):
 
        
         
-     
+def gradePointCalc(grade):
+    gradePoint = 1.234
+    if grade == "A":
+        gradePoint = 4.00
+    elif grade == "A-":
+        gradePoint = 3.50
+    elif grade == "B+":
+        gradePoint = 3.3
+    elif grade == "B":
+        gradePoint = 3.00
+    elif grade == "B-":
+        gradePoint = 2.70
+    elif grade == "C+":
+        gradePoint = 2.3
+    elif grade == "C":
+        gradePoint = 2
+    elif grade == "C-":
+        gradePoint = 1.7
+    elif grade == "D":
+        gradePoint = 1
+    else:
+        gradePoint = 0
+    return gradePoint
+
+
+
+# Create your views here.
+def Calculator_home(request):
+    if request.method == "POST":
+        cg_data = request.POST
+
+        if request.POST.get("passed_credits") != "":
+            credit_passed = int(request.POST.get("passed_credits"))
+        else:
+            credit_passed = 0
+        if request.POST.get("prev_cgpa") != "":
+            prev_cgpa = request.POST.get("prev_cgpa")
+            prev_cgpa = float(prev_cgpa.replace(' ', ''))
+        else:
+            prev_cgpa = 0
+
+        credits = []
+        for i in range(1, 6):
+            if request.POST.get(("credits" + str(i))) != "":
+                credits.append(int(request.POST.get(("credits" + str(i)))))
+
+        grades = []
+        for i in range(1, 6):
+            if request.POST.get(("grade" + str(i))) != "":
+                grades.append(gradePointCalc(request.POST.get(("grade" + str(i)))))
+
+        print("credits", credits)
+        print("grades", grades)
+
+        cg_credit_sum = 0
+
+        for i in range(len(credits)):
+            temp = grades[i] * credits[i]
+            cg_credit_sum += temp
+        new_cg = (float(prev_cgpa) * int(credit_passed) + float(cg_credit_sum)) / (int(credit_passed) + sum(credits))
+        context = {"cg_data": cg_data, "new_cg": new_cg}
+        return render(request, "cg_calculator/cg_calculator.html", context)
+    context = {}
+    return render(request, "cg_calculator/cg_calculator.html", context)
+
+def student_home(request):
+     return render(request, "student_home.html")
+
+def grade_overview(request):
+    return render(request,"grade_overview.html")
