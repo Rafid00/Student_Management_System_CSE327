@@ -180,6 +180,7 @@ def add_subject(request):
     return render(request, 'add_subject.html', context)
 
 
+
 def manage_staff(request):
     allStaff = CustomUser.objects.filter(user_type=2)
     context = {
@@ -187,7 +188,6 @@ def manage_staff(request):
         'page_title': 'Manage Staff'
     }
     return render(request, "manage_faculty.html", context)
-
 
 def manage_student(request):
     students = CustomUser.objects.filter(user_type=3)
@@ -262,7 +262,7 @@ def edit_staff(request, staff_id):
     else:
         user = CustomUser.objects.get(id=staff_id)
         staff = Staff.objects.get(id=user.id)
-        return render(request, "edit_faculty.html", context)
+        return render(request, "edit_staff.html", context)
 
 
 def edit_student(request, student_id):

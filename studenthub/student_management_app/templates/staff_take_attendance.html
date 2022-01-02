@@ -30,7 +30,7 @@
                             <select name="session" id='session' class="form-control">
                                 <option value="">----</option>
                                 {% for session in sessions  %}
-                                <option value="{{session.id}}">{{session}} </option>
+                                <option value="{{session.id}}">{{session.name}} </option>
                                 {% endfor %}
                             </select>
                         </div>

@@ -1,5 +1,5 @@
 {% extends 'base2.html' %}
-{% load static %}
+{% load static %}   
 {% block body_block %}
 {% block custom_css %}
     <link rel="stylesheet" href="{% static "plugins/fontawesome-free/css/all.min.css" %}">
@@ -122,11 +122,10 @@
                 <!-- /.card-body -->
               </div>
             </div>
-        </div>
-  {% endif %}      
-  </section>
-
-
+        </div>  
+         
+      </section>
+      {% endif %}
 {% endblock %}
 
 {% block custom_js %}
