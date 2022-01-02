@@ -7,10 +7,13 @@ class BaseTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.add_course_url = reverse('student_app:add_course')
+        self.send_notice_url = reverse('student_app:send_notice')
         return super().setUp()
 
-class Test_Add_Course(BaseTest):
+class Test_Send_Notice(BaseTest):
     def test_can_view_page_correctly(self):
-        response = self.client.get(self.add_course_url)
+        response = self.client.get(self.send_notice_url)
         self.assertEqual(response.status_code,200)
-        self.assertTemplateUsed(response,'add_course.html')
+        self.assertTemplateUsed(response,'send_notice.html')
+
+
