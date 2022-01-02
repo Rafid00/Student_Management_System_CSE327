@@ -266,6 +266,19 @@ main {
    font-weight: 500;
 }
 
+.pro-pic img {
+   width: 150px;
+   height: 150px;
+   object-fit: cover;
+   border-radius: 50%;
+}
+
+.general-info-section {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
 .profile-setting {
    margin-top: 10px;
 }
@@ -291,11 +304,6 @@ main {
    transform: translate(-50%, -50%);
 }
 
-.pro-pic img {
-   width: 100%;
-   border-radius: 50%;
-}
-
 .general-info-section {
    grid-column: 2/5;
 }
@@ -310,8 +318,12 @@ main {
    grid-column: 2/5;
 }
 
-.pro-pic{
+.pro-pic {
    border-radius: 50%;
+}
+
+.pro-pic-section {
+   height: 300px;
 }
 
 .pro-pic-section,

@@ -1,4 +1,5 @@
 import json
+from django.contrib.auth import SESSION_KEY
 import requests
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
@@ -9,6 +10,8 @@ from django.templatetags.static import static
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import UpdateView
+from .models import Attendance, Semester, Subject
+
 
 from .forms import *
 from .models import *
@@ -418,7 +421,8 @@ def admin_view_attendance(request):
         'page_title': 'View Attendance'
     }
 
-    return render(request, "admin_attendance_view.html", context)
+    return render(request,"admin_attendance_view.html", context)
+
 
 @csrf_exempt
 def get_admin_attendance(request):
@@ -436,7 +440,7 @@ def get_admin_attendance(request):
         for report in attendance_reports:
             data = {
                 "status":  str(report.status),
-                "name": str(report.student)
+            "name": str(report.student)
             }
             json_data.append(data)
         return JsonResponse(json.dumps(json_data), safe=False)

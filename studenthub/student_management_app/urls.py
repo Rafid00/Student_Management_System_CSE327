@@ -18,9 +18,17 @@ urlpatterns = [
     path('addstd/', adminviews.add_student, name='add_student'),
     path('addfac/', adminviews.add_staff, name='add_faculty'),
     path('sendnotice/', adminviews.send_notice, name='send_notice'),
+
     path("get_attendance/", adminviews.get_attendance, name='get_attendance'),
     path("view_attendance/", adminviews.admin_view_attendance, name="admin_view_attendance",),
     path("fetch_attendance/", adminviews.get_admin_attendance, name='get_admin_attendance'),
+
+    path('view_attendance/', adminviews.admin_view_attendance, name="admin_attendance_view",),
+    path('fetch_attendance/', adminviews.get_admin_attendance, name='get_admin_attendance'),
+
+    path('view_attendance/', adminviews.admin_view_attendance, name="admin_attendance_view",),
+    path('fetch_attendance/', adminviews.get_admin_attendance, name='get_admin_attendance'),
+
     path('Logout/', views.logout_user, name='logout_admin'),
     path('add_course/',adminviews.add_course,name='add_course'),
     path('add_student/', adminviews.add_student,name="add_student_save"),
@@ -55,4 +63,6 @@ urlpatterns = [
     path('add_payment/',adminviews.payment_status,name='add_payment'),
     path('update_payment/<int:student_id>',adminviews.update_payment_status,name='update_payment'),
     path('cgpa_calculator/',views.cgpa_calculator,name='cgpa_calculator'),
+    path('major_overview/',views.major_overview,name='major_overview'),
 ]
+

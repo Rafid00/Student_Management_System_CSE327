@@ -10,6 +10,7 @@ from .EmailBackEnd import EmailBackEnd
 from .models import *
 from .forms import *
 from django.core.files.storage import FileSystemStorage
+
 # Create your views here.
 
 
@@ -22,6 +23,8 @@ def login_home(request):
         else:
             return redirect(reverse("student_app:profile"))
     return render(request, 'login.html')
+
+
 
 
 def doLogin(request, **kwargs):
@@ -268,3 +271,8 @@ def notice_view(request):
 
 def grade_overview(request):
     return render(request,"grade_overview.html")
+
+def major_overview (request):
+    contex={'courses':['cse 231','cse 225','cse 115']}
+    return render(request,"major_overview.html",contex)
+
