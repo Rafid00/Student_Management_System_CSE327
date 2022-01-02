@@ -115,11 +115,13 @@
                 return false
             }
             $.ajax({
-<<<<<<< Updated upstream
+
                 url: "{% url 'get_admin_attendance' %}",
-=======
+
                 url: "{% url 'get_attendance' %}",//this line//
->>>>>>> Stashed changes
+
+                url: "{% url 'get_attendance' %}",//this line//
+
                 type: 'POST',
                 data:{
                     subject:subject,

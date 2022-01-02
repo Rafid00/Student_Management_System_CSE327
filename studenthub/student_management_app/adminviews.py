@@ -423,6 +423,7 @@ def admin_view_attendance(request):
 
     return render(request,"admin_attendance_view.html", context)
 
+
 @csrf_exempt
 def get_admin_attendance(request):
     subject_id = request.POST.get('subject')
@@ -439,7 +440,7 @@ def get_admin_attendance(request):
         for report in attendance_reports:
             data = {
                 "status":  str(report.status),
-                "name": str(report.student)
+            "name": str(report.student)
             }
             json_data.append(data)
         return JsonResponse(json.dumps(json_data), safe=False)

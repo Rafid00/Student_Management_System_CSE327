@@ -1,0 +1,78 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		#main-wrapper{
+			margin: 2rem 20%;
+		}
+		#course-table {
+		  font-family: Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		#course-table td, #course-table th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		}
+
+		#course-table tr:nth-child(even){background-color: #f2f2f2;}
+
+		#course-table tr:hover {background-color: #ddd;}
+
+		#course-table th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: left;
+		  background-color: #04AA6D;
+		  color: white;
+		}
+		.submit{
+			margin: 0 40%;
+			background-color: #00cc00;
+			padding: .5rem;
+		}
+		.submit:hover{
+			background-color: #008000;
+			color: #fff;
+		}
+		h1{
+			text-align: center;
+		}
+	</style>
+
+</head>
+<body>
+
+	<div id="main-wrapper">	
+	    	<table id="course-table">
+			  <tr>
+			    <th>courses</th>
+			    
+			  </tr>
+
+
+			  
+			    
+			    {% for course in courses  %}
+                <tr><td> {{course}} </td></tr>
+			 	 {% endfor %}
+			   
+			  
+
+			</table>
+		
+	</div>
+
+
+	
+</body>
+</html>

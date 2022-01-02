@@ -7,13 +7,10 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.decorators.csrf import csrf_exempt
 import math
 from .EmailBackEnd import EmailBackEnd
-<<<<<<< Updated upstream
 from .models import *
 from .forms import *
 from django.core.files.storage import FileSystemStorage
-=======
 
->>>>>>> Stashed changes
 # Create your views here.
 
 
@@ -277,5 +274,5 @@ def grade_overview(request):
 
 def major_overview (request):
     contex={'courses':['cse 231','cse 225','cse 115']}
-    return render(request,"major_overview.html",context)
+    return render(request,"major_overview.html",contex)
 
