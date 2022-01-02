@@ -144,6 +144,7 @@ def gradePointCalc(grade):
     return gradePoint
 
 
+
 # Create your views here.
 def Calculator_home(request):
     if request.method == "POST":
@@ -151,7 +152,6 @@ def Calculator_home(request):
 
         if request.POST.get("passed_credits") != "":
             credit_passed = int(request.POST.get("passed_credits"))
-
         else:
             credit_passed = 0
         if request.POST.get("prev_cgpa") != "":
