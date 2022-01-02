@@ -8,6 +8,7 @@ class BaseTest(TestCase):
         self.client = Client()
         self.add_course_url = reverse('student_app:add_course')
         self.send_notice_url = reverse('student_app:send_notice')
+        self.grade_overview_url = reverse('student_app:grade_overview')
         return super().setUp()
 
 class Test_Send_Notice(BaseTest):
@@ -16,4 +17,9 @@ class Test_Send_Notice(BaseTest):
         self.assertEqual(response.status_code,200)
         self.assertTemplateUsed(response,'send_notice.html')
 
+class Test_Grade_Overview(BaseTest):
+    def test_can_view_page_correctly(self):
+        response = self.client.get(self.grade_overview_url)
+        self.assertEqual(response.status_code,200)
+        self.assertTemplateUsed(response,'grade_overview.html')
 
