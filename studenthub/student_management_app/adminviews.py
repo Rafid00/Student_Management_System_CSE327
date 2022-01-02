@@ -180,7 +180,6 @@ def add_subject(request):
     return render(request, 'add_subject.html', context)
 
 
-
 def manage_staff(request):
     allStaff = CustomUser.objects.filter(user_type=2)
     context = {

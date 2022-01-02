@@ -41,7 +41,6 @@ urlpatterns = [
          name="check_email_availability"),
     path('profile/', views.profile, name='profile'),
     path('noticeoverview/', views.notice_view, name='notice_overview'),
-    
     path('staff_home/', views.staff_profile, name='staff_home'),
     path('staff_take_attendance/',staffviews.staff_take_attendance,name="staff_take_attendance"),
     path('staff_update_attendance/',staffviews.staff_update_attendance,name="staff_update_attendance"),
