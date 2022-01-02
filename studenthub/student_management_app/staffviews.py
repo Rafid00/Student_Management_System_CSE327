@@ -102,7 +102,7 @@ def staff_update_attendance(request):
         'page_title': 'Update Attendance'
     }
 
-    return render(request, 'staff_template/staff_update_attendance.html', context)
+    return render(request, 'staff_update_attendance.html', context)
 
 
 @csrf_exempt
@@ -140,8 +140,6 @@ def update_attendance(request):
         return None
 
     return HttpResponse("OK")
-
-
 
 
 

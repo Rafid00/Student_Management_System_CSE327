@@ -18,7 +18,7 @@ def login_home(request):
         if request.user.user_type == '1':
             return render(request,'admin_home.html')
         elif request.user.user_type == '2':
-            return redirect(reverse("staff_home"))
+            return redirect(reverse("student_app:staff_home"))
         else:
             return redirect(reverse("student_app:profile"))
     return render(request, 'login.html')
@@ -39,7 +39,7 @@ def doLogin(request, **kwargs):
             if user.user_type == '1':
                 return render(request,'admin_home.html')
             elif user.user_type == '2':
-                return redirect(reverse("staff_home"))
+                return redirect(reverse("student_app:staff_home"))
             else:
                 return redirect(reverse("student_app:profile"))
         else:
@@ -52,6 +52,26 @@ def logout_user(request):
     if request.user != None:
         logout(request)
     return redirect("/")
+
+@csrf_exempt
+def get_attendance(request):
+    subject_id = request.POST.get('subject')
+    session_id = request.POST.get('session')
+    try:
+        subject = get_object_or_404(Subject, id=subject_id)
+        session = get_object_or_404(Semester, id=session_id)
+        attendance = Attendance.objects.filter(subject=subject, session=session)
+        attendance_list = []
+        for attd in attendance:
+            data = {
+                    "id": attd.id,
+                    "attendance_date": str(attd.date),
+                    "session": attd.session.id
+                    }
+            attendance_list.append(data)
+        return JsonResponse(json.dumps(attendance_list), safe=False)
+    except Exception as e:
+        return None
 
 
 
@@ -117,6 +137,25 @@ def profile(request):
     address = user.address
     email_id = user.email
     return render(request, "profile.html", {'first_name':first_name,'last_name':last_name,'gender':g,'image':image,'address':address,'email':email_id})
+
+def staff_profile(request):
+    user = CustomUser.objects.get(email=request.user.email)
+    first_name = user.first_name
+    last_name = user.last_name
+    # semester = student.session
+    g = ""
+    gender = user.gender
+    if gender == "M":
+        g = "Male"
+    else:
+        g = "Female"  
+
+    image = user.profile_pic  
+    address = user.address
+    email_id = user.email
+    return render(request, "staff_home.html", {'first_name':first_name,'last_name':last_name,'gender':g,'image':image,'address':address,'email':email_id})
+
+
        
         
      
