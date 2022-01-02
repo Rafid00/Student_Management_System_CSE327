@@ -262,7 +262,6 @@ def student_home(request):
     return render(request, "student_home.html", context)
 
 def notice_view(request):
-    
     notices = Notice.objects.all()
     context = {'notices':notices,
                 'page_title':'Notice Overview'
