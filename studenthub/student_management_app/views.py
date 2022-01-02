@@ -120,24 +120,24 @@ def profile(request):
        
         
 def gradePointCalc(grade):
-	if(grade == "A"):
-		gradePoint = 4
-	elif ( grade == "A-"):
-		gradePoint = 3.5
-
-    elif (grade == "B+"):
+    gradePoint = 1.234
+    if grade == "A":
+        gradePoint = 4.00
+    elif grade == "A-":
+        gradePoint = 3.50
+    elif grade == "B+":
         gradePoint = 3.3
-    elif (grade == "B"):
-        gradePoint = 3
-    elif (grade == "B-"):
-        gradePoint = 2.7
-    elif (grade == "C+"):
+    elif grade == "B":
+        gradePoint = 3.00
+    elif grade == "B-":
+        gradePoint = 2.70
+    elif grade == "C+":
         gradePoint = 2.3
-    elif (grade == "C"):
+    elif grade == "C":
         gradePoint = 2
-    elif (grade == "C-"):
+    elif grade == "C-":
         gradePoint = 1.7
-    elif (grade == "D"):
+    elif grade == "D":
         gradePoint = 1
     else:
         gradePoint = 0
@@ -152,7 +152,7 @@ def Calculator_home(request):
         if request.POST.get("passed_credits") != "":
             credit_passed = int(request.POST.get("passed_credits"))
 
-            else:
+        else:
             credit_passed = 0
         if request.POST.get("prev_cgpa") != "":
             prev_cgpa = request.POST.get("prev_cgpa")
@@ -184,3 +184,8 @@ def Calculator_home(request):
     context = {}
     return render(request, "cg_calculator/cg_calculator.html", context)
 
+def student_home(request):
+     return render(request, "student_home.html")
+
+def grade_overview(request):
+    return render(request,"grade_overview.html")

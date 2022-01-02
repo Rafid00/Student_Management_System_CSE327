@@ -1,3 +1,4 @@
+{% load static %} {% if request.user.user_type %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -10,7 +11,7 @@
          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
          rel="stylesheet"
       />
-      <link rel="stylesheet" href="grade_overview.css" />
+      <link rel="stylesheet" href="{%static 'css/grade_overview.css'%}" />
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
    </head>
 
@@ -48,63 +49,63 @@
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/graduating-student 1.svg" alt="" />
+                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
                   <span class="link-text">Student Profile</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/presentation 1.svg" alt="" />
+                  <img src="{%static 'images/presentation 1.svg'%}" alt="" />
                   <span class="link-text">Faculty Profile</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/x-button 1.svg" alt="" />
+                  <img src="{%static 'images/x-button 1.svg'%}" alt="" />
                   <span class="link-text">Course Drop</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/grade 1.svg" alt="" />
+                  <img src="{%static 'images/grade 1.svg'%}" alt="" />
                   <span class="link-text">Grade Overview</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/debit-card 1.svg" alt="" />
+                  <img src="{%static 'images/debit-card 1.svg'%}" alt="" />
                   <span class="link-text">Payment Status</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/event 1.svg" alt="" />
+                  <img src="{%static 'images/event 1.svg'%}" alt="" />
                   <span class="link-text">Attendance Records</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/reading 1.svg" alt="" />
+                  <img src="{%static 'images/reading 1.svg'%}" alt="" />
                   <span class="link-text">Major Overview</span>
                </a>
             </li>
 
             <li class="nav-item">
                <a href="#" class="nav-link">
-                  <img src="images/calculator 1.svg" alt="" />
+                  <img src="{%static 'images/calculator 1.svg'%}" alt="" />
                   <span class="link-text">Grade Calculator</span>
                </a>
             </li>
 
             <li class="nav-item" id="themeButton">
                <a href="#" class="nav-link">
-                  <img src="images/logout (1) 1.svg" alt="" />
+                  <img src="{%static 'images/logout (1) 1.svg'%}" alt="" />
                   <span class="link-text">Log Out</span>
                </a>
             </li>
@@ -245,3 +246,7 @@
       </main>
    </body>
 </html>
+
+{% endif %}
+
+
