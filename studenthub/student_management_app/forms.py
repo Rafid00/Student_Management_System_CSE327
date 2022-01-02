@@ -101,7 +101,6 @@ class NoticeForm(FormSettings):
         model = Notice
 
 class SubjectForm(FormSettings):
-
     def __init__(self, *args, **kwargs):
         super(SubjectForm, self).__init__(*args, **kwargs)
 

@@ -185,7 +185,32 @@ def Calculator_home(request):
     return render(request, "cg_calculator/cg_calculator.html", context)
 
 def student_home(request):
-     return render(request, "student_home.html")
+    # user = CustomUser.objects.get(email=request.user.email)
+    # first_name = user.first_name
+    # last_name = user.last_name
+    # # semester = student.session
+    # g = ""
+    # gender = user.gender
+    # if gender == "M":
+    #     g = "Male"
+    # else:
+    #     g = "Female"  
+    # image = user.profile_pic
+    # email_id = user.email
+    
+    notice = Notice.objects.all()
+    context = {'notices':notice,
+                'page_title':'Notice Overview'
+                }
+    return render(request, "student_home.html", context)
+
+def notice_view(request):
+    
+    notice = Notice.objects.all()
+    context = {'notices':notice,
+                'page_title':'Notice Overview'
+                }
+    return render(request, "notice_overview.html", context)
 
 def grade_overview(request):
     return render(request,"grade_overview.html")
