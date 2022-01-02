@@ -434,7 +434,6 @@ def admin_view_attendance(request):
 
     return render(request, "admin_attendance_view.html", context)
 
-
 @csrf_exempt
 def get_admin_attendance(request):
     subject_id = request.POST.get('subject')
@@ -442,7 +441,7 @@ def get_admin_attendance(request):
     attendance_date_id = request.POST.get('attendance_date_id')
     try:
         subject = get_object_or_404(Subject, id=subject_id)
-        session = get_object_or_404(Session, id=session_id)
+        session = get_object_or_404(Semester, id=session_id)
         attendance = get_object_or_404(
             Attendance, id=attendance_date_id, session=session)
         attendance_reports = AttendanceReport.objects.filter(
@@ -537,6 +536,27 @@ def send_student_notification(request):
         return HttpResponse("True")
     except Exception as e:
         return HttpResponse("False")
+
+
+@csrf_exempt
+def get_attendance(request):
+    subject_id = request.POST.get('subject')
+    session_id = request.POST.get('session')
+    try:
+        subject = get_object_or_404(Subject, id=subject_id)
+        session = get_object_or_404(Semester, id=session_id)
+        attendance = Attendance.objects.filter(subject=subject, session=session)
+        attendance_list = []
+        for attd in attendance:
+            data = {
+                    "id": attd.id,
+                    "attendance_date": str(attd.date),
+                    "session": attd.session.id
+                    }
+            attendance_list.append(data)
+        return JsonResponse(json.dumps(attendance_list), safe=False)
+    except Exception as e:
+        return None
 
 
 @csrf_exempt
