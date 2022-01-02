@@ -10,6 +10,7 @@ from .EmailBackEnd import EmailBackEnd
 from .models import *
 from .forms import *
 from django.core.files.storage import FileSystemStorage
+
 # Create your views here.
 
 
@@ -22,6 +23,8 @@ def login_home(request):
         else:
             return redirect(reverse("student_app:profile"))
     return render(request, 'login.html')
+
+
 
 
 def doLogin(request, **kwargs):
@@ -139,6 +142,66 @@ def gradePointCalc(grade):
 
 
 # Create your views here.
+
+# def Calculator_home(request):
+#     if request.method == "POST":
+#         cg_data = request.POST
+
+#         if request.POST.get("passed_credits") != "":
+#             credit_passed = int(request.POST.get("passed_credits"))
+
+#             else:
+#             credit_passed = 0
+#         if request.POST.get("prev_cgpa") != "":
+#             prev_cgpa = request.POST.get("prev_cgpa")
+#             prev_cgpa = float(prev_cgpa.replace(' ', ''))
+#         else:
+#             prev_cgpa = 0
+
+#         credits = []
+#         for i in range(1, 6):
+#             if request.POST.get(("credits" + str(i))) != "":
+#                 credits.append(int(request.POST.get(("credits" + str(i)))))
+
+#         grades = []
+#         for i in range(1, 6):
+#             if request.POST.get(("grade" + str(i))) != "":
+#                 grades.append(gradePointCalc(request.POST.get(("grade" + str(i)))))
+
+#         print("credits", credits)
+#         print("grades", grades)
+
+#         cg_credit_sum = 0
+
+#         for i in range(len(credits)):
+#             temp = grades[i] * credits[i]
+#             cg_credit_sum += temp
+#         new_cg = (float(prev_cgpa) * int(credit_passed) + float(cg_credit_sum)) / (int(credit_passed) + sum(credits))
+#         context = {"cg_data": cg_data, "new_cg": new_cg}
+#         return render(request, "cg_calculator/cg_calculator.html", context)
+#     context = {}
+#     return render(request, "cg_calculator/cg_calculator.html", context)
+@csrf_exempt
+def get_attendance(request):
+    subject_id = request.POST.get('subject')
+    session_id = request.POST.get('session')
+    try:
+        subject = get_object_or_404(Subject, id=subject_id)
+        session = get_object_or_404(Semester, id=session_id)
+        attendance = Attendance.objects.filter(subject=subject, session=session)
+        attendance_list = []
+        for attd in attendance:
+            data = {
+                    "id": attd.id,
+                    "attendance_date": str(attd.date),
+                    "session": attd.session.id
+                    }
+            attendance_list.append(data)
+        return JsonResponse(json.dumps(attendance_list), safe=False)
+    except Exception as e:
+        return None
+
+
 def cgpa_calculator(request):
     if request.method == "POST":
         cg_data = request.POST
@@ -162,6 +225,7 @@ def cgpa_calculator(request):
         for i in range(1, 6):
             if request.POST.get(("grade" + str(i))) != "":
                 grades.append(gradePointCalc(request.POST.get(("grade" + str(i)))))
+ 
 
         print("credits", credits)
         print("grades", grades)
@@ -198,17 +262,17 @@ def student_home(request):
     return render(request, "student_home.html", context)
 
 def notice_view(request):
-<<<<<<< HEAD
-    notice = Notice.objects.all()
-    context = {'notices':notice,
-=======
     
     notices = Notice.objects.all()
     context = {'notices':notices,
->>>>>>> 82efe47fa1996c64614113973bd2af9b7278e2d3
                 'page_title':'Notice Overview'
                 }
     return render(request, "notice_overview.html", context)
 
 def grade_overview(request):
     return render(request,"grade_overview.html")
+
+def major_overview (request):
+    contex={'courses':['cse 231','cse 225','cse 115']}
+    return render(request,"major_overview.html",contex)
+

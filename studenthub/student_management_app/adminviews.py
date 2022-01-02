@@ -1,4 +1,5 @@
 import json
+from django.contrib.auth import SESSION_KEY
 import requests
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
@@ -9,6 +10,8 @@ from django.templatetags.static import static
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import UpdateView
+from .models import Attendance, Semester, Subject
+
 
 from .forms import *
 from .models import *
@@ -417,7 +420,7 @@ def admin_view_attendance(request):
         'page_title': 'View Attendance'
     }
 
-    return render(request, "admin_attendance_view.html", context)
+    return render(request,"admin_attendance_view.html", context)
 
 
 @csrf_exempt
@@ -436,7 +439,7 @@ def get_admin_attendance(request):
         for report in attendance_reports:
             data = {
                 "status":  str(report.status),
-                "name": str(report.student)
+            "name": str(report.student)
             }
             json_data.append(data)
         return JsonResponse(json.dumps(json_data), safe=False)
@@ -553,6 +556,27 @@ def send_student_notification(request):
         return HttpResponse("True")
     except Exception as e:
         return HttpResponse("False")
+
+
+@csrf_exempt
+def get_attendance(request):
+    subject_id = request.POST.get('subject')
+    session_id = request.POST.get('session')
+    try:
+        subject = get_object_or_404(Subject, id=subject_id)
+        session = get_object_or_404(Semester, id=session_id)
+        attendance = Attendance.objects.filter(subject=subject, session=session)
+        attendance_list = []
+        for attd in attendance:
+            data = {
+                    "id": attd.id,
+                    "attendance_date": str(attd.date),
+                    "session": attd.session.id
+                    }
+            attendance_list.append(data)
+        return JsonResponse(json.dumps(attendance_list), safe=False)
+    except Exception as e:
+        return None
 
 
 @csrf_exempt

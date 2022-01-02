@@ -23,7 +23,7 @@
 
       <link rel="stylesheet" href="{% static 'css/student_profile.css' %}" />
 
-      <title>Student Profile</title>
+      <title>Faculty Profile</title>
    </head>
    <body>
       <nav class="navbar">
@@ -100,7 +100,7 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:major_overview' %}" class="nav-link">
                   <img src="{%static 'images/reading 1.svg'%}" alt="" />
                   <span class="link-text">Major Overview</span>
                </a>
@@ -153,7 +153,7 @@
                   Entry Item: {{ semester }}<br />
                   Gender: {{ gender }}<br />
                   Current Status: Enrolled<br />
-                  Current CGPA: 00.00<br />
+                  Address: {{address}}<br />
                </p>
             </div>
             <div class="personal-info-section">
@@ -291,14 +291,14 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:cgpa_calculator' %}" class="nav-link">
                   <img src="{%static 'images/calculator 1.svg'%}" alt="" />
                   <span class="link-text">Grade Calculator</span>
                </a>
             </li>
 
             <li class="nav-item" id="themeButton">
-               <a href="#" class="nav-link">
+               <a href="{% url  'student_app:logout_user' %}" class="nav-link">
                   <img src="{%static 'images/logout (1) 1.svg'%}" alt="" />
                   <span class="link-text">Log Out</span>
                </a>
@@ -313,7 +313,7 @@
             </div>
             <div class="pro-pic-section">
                <div class="pro-pic-section-container">
-                  <div class="pro-pic"><img src="{%static 'images/pro-pic.svg'%}" alt="" /></div>
+                  <div class="pro-pic"><img src="{{ image }}" alt="" /></div>
                   <div class="name">{{ email }}</div>
                   <div class="id">2011237642</div>
                   <div class="profile-setting">
@@ -332,18 +332,12 @@
                <p><strong>General Info</strong></p>
 
                <p>
-                  Full Name: <span class="name">{{ first_name}} {{ last_name }}</span><br />
+                  Full Name: <span class="name">{{ first_name }} {{ last_name}}</span><br />
                   Student ID: <span class="id">2011237 6 42</span><br />
-                  Enrolled In: <span class="major">Bachelor of Science in Computer Science and Engineering</span><br />
-                  Curriculum Name: BS in CSE - 130 Credit Curriculum<br />
-                  Entry Item: Spring 2020<br />
-                  Test Pas #: 0009<br />
+                  Entry Item: {{ semester }}<br />
+                  Gender: {{ gender }}<br />
                   Current Status: Enrolled<br />
-                  Current CGPA: 00.00<br />
-                  Credit Passed: 00.00<br />
-                  Probation: 0<br />
-                  Major 1: N/A<br />
-                  Major 2: N/A
+                  Address: {{address}}<br />
                </p>
             </div>
             <div class="personal-info-section">
@@ -351,12 +345,11 @@
                   <p><strong>Personal Info</strong></p>
 
                   <p>
-                     Cell Phone: 01551****95<br />
-                     Personal Email: rafid.ahmmad@northsouth.edu<br />
+                     Personal Email: {{email}}<br />
                      NID: 00230121313<br />
                      Birth Reg No: 1320123122321<br />
                      Date of Birth: 9999-99-99<br />
-                     Sex: M
+                     Sex: {{ gender }}
                   </p>
                </div>
                <div class="right-personal-info">
@@ -364,7 +357,7 @@
                      Citizenship: Bangladeshi<br />
                      Blood Group: <br />
                      Marital Status: Single<br />
-                     Mailing Address: 25 Some Random Address, Bashundhara R/A, Dhaka - 1212<br />
+                     Mailing Address: {{address}}<br />
                   </p>
                </div>
             </div>

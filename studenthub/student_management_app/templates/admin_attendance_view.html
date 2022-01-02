@@ -100,6 +100,7 @@
 
 
 {% block custom_js %}
+
 <script>
     $(document).ready(function () {
         $("#fetch_attendance").click(function(){
@@ -114,7 +115,13 @@
                 return false
             }
             $.ajax({
+
                 url: "{% url 'get_admin_attendance' %}",
+
+                url: "{% url 'get_attendance' %}",//this line//
+
+                url: "{% url 'get_attendance' %}",//this line//
+
                 type: 'POST',
                 data:{
                     subject:subject,
