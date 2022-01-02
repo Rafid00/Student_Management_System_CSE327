@@ -75,52 +75,6 @@ def get_attendance(request):
 
 
 
-# def profile(request):
-#     user=Student.objects.get(email=request.user.email)
-#     # user=CustomUser.objects.all().filter(email=request.user.email)
-#     # student=get_object_or_404(CustomUser, id=user.student_id)
-#     # student = get_object_or_404(Student, admin=request.user)
-#     # username=student.email
-#     # username=user.email
-#     if request.user != None:
-#         return render(request,'profile.html', {'email': user.email})
-
-# def profile(request):
-#     student = get_object_or_404(Student, admin=request.user)
-#     name = student.first_name + ", " + student.last_name 
-#     total_subject = Subject.objects.filter(course=student.course).count()
-#     total_attendance = AttendanceReport.objects.filter(student=student).count()
-#     total_present = AttendanceReport.objects.filter(student=student, status=True).count()
-
-     
-    
-#     if total_attendance == 0:
-#         subject_name = []
-#         data_present = []
-#         data_absent = []
-#         subjects = Subject.objects.filter(course=student.course)
-#     for subject in subjects:
-#         attendance = Attendance.objects.filter(subject=subject)
-#         present_count = AttendanceReport.objects.filter(
-#             attendance__in=attendance, status=True, student=student).count()
-#         absent_count = AttendanceReport.objects.filter(
-#             attendance__in=attendance, status=False, student=student).count()
-#         subject_name.append(subject.name)
-#         data_present.append(present_count)
-#         data_absent.append(absent_count)
-       
-#     context = {
-#         'name': name,
-#         'total_attendance': total_attendance,
-#         'total_subject': total_subject,
-#         'subjects': subjects,
-#         'data_present': data_present,
-#         'data_absent': data_absent,
-#         'data_name': subject_name,
-#         'page_title': 'Student Homepage'}
-
-#     return render(request, 'profile.html', context) # Don't divide. DivisionByZero
-
 def profile(request):
     user = CustomUser.objects.get(email=request.user.email)
     first_name = user.first_name
@@ -185,7 +139,7 @@ def gradePointCalc(grade):
 
 
 # Create your views here.
-def Calculator_home(request):
+def cgpa_calculator(request):
     if request.method == "POST":
         cg_data = request.POST
 
@@ -219,9 +173,9 @@ def Calculator_home(request):
             cg_credit_sum += temp
         new_cg = (float(prev_cgpa) * int(credit_passed) + float(cg_credit_sum)) / (int(credit_passed) + sum(credits))
         context = {"cg_data": cg_data, "new_cg": new_cg}
-        return render(request, "cg_calculator/cg_calculator.html", context)
+        return render(request, "cgpa_calculator.html", context)
     context = {}
-    return render(request, "cg_calculator/cg_calculator.html", context)
+    return render(request, "cgpa_calculator.html", context)
 
 def student_home(request):
      return render(request, "student_home.html")

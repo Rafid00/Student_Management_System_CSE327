@@ -50,4 +50,5 @@ urlpatterns = [
          staffviews.update_attendance, name='update_attendance'),
     path('add_payment/',adminviews.payment_status,name='add_payment'),
     path('update_payment/<int:student_id>',adminviews.update_payment_status,name='update_payment'),
+    path('cgpa_calculator/',views.cgpa_calculator,name='cgpa_calculator')
 ]
