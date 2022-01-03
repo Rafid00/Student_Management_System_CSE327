@@ -13,6 +13,7 @@ Welcome to Studenthub's documentation!
    modules
    studenthub
    student_management_app
+   student_management_app.test
 
 Indices and tables
 ==================
