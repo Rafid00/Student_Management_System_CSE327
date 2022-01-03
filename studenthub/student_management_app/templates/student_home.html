@@ -49,28 +49,21 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
-                  <span class="link-text">Student Profile</span>
-               </a>
-            </li>
-
-            <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:student_home' %}" class="nav-link">
                   <img src="{%static 'images/presentation 1.svg'%}" alt="" />
-                  <span class="link-text">Faculty Profile</span>
+                  <span class="link-text">Student Home</span>
                </a>
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <img src="{%static 'images/x-button 1.svg'%}" alt="" />
-                  <span class="link-text">Course Drop</span>
+               <a href="{% url 'student_app:profile' %}" class="nav-link">
+                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
+                  <span class="link-text">View Profile</span>
                </a>
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:grade_overview' %}" class="nav-link">
                   <img src="{%static 'images/grade 1.svg'%}" alt="" />
                   <span class="link-text">Grade Overview</span>
                </a>
@@ -91,21 +84,21 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:major_overview' %}" class="nav-link">
                   <img src="{%static 'images/reading 1.svg'%}" alt="" />
                   <span class="link-text">Major Overview</span>
                </a>
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:cgpa_calculator' %}" class="nav-link">
                   <img src="{%static 'images/calculator 1.svg'%}" alt="" />
                   <span class="link-text">Grade Calculator</span>
                </a>
             </li>
 
             <li class="nav-item" id="themeButton">
-               <a href="#" class="nav-link">
+               <a href="{% url  'student_app:logout_user' %}" class="nav-link">
                   <img src="{%static 'images/logout (1) 1.svg'%}" alt="" />
                   <span class="link-text">Log Out</span>
                </a>
@@ -121,7 +114,7 @@
                   <img src="{%static 'images/pro-pic.svg'%}" alt="" />
                </div>
                <div class="pro-pic-des">
-                  <p>Rafid Ahmmad</p>
+                  <p>{{ email }}</p>
                   <p>2011237642</p>
                </div>
                <div class="student-des">
@@ -135,11 +128,9 @@
             <div class="notice-board">
                <div class="title"><h2>Brief Profile</h2></div>
                <ul>
-                  {% for notice in notices %}
-                     {% if notice.counter != 5 %}
-                     <li><a href="">{{ notice.title }}</a></li>
-                     {% endif %}
-                  {% endfor %}
+                  {% for notice in notices %} {% if notice.counter != 5 %}
+                  <li><a href="">{{ notice.title }}</a></li>
+                  {% endif %} {% endfor %}
                   <div class="view-notice">
                      <a href="{% url 'student_app:notice_overview' %}">View More Notice</a>
                   </div>
@@ -155,4 +146,3 @@
 </html>
 
 {% endif %}
-

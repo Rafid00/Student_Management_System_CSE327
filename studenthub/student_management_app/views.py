@@ -21,7 +21,7 @@ def login_home(request):
         elif request.user.user_type == '2':
             return redirect(reverse("student_app:staff_home"))
         else:
-            return redirect(reverse("student_app:profile"))
+            return redirect(reverse("student_app:student_home"))
     return render(request, 'login.html')
 
 
@@ -44,7 +44,7 @@ def doLogin(request, **kwargs):
             elif user.user_type == '2':
                 return redirect(reverse("student_app:staff_home"))
             else:
-                return redirect(reverse("student_app:profile"))
+                return redirect(reverse("student_app:student_home"))
         else:
             messages.error(request, "Invalid details")
             return redirect("/")
@@ -256,7 +256,9 @@ def student_home(request):
     email_id = user.email
     
     notice = Notice.objects.all()
-    context = {'notices':notice,
+    context = {
+                'email': email_id,
+                'notices':notice,
                 'page_title':'Notice Overview'
                 }
     return render(request, "student_home.html", context)

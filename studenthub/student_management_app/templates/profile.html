@@ -23,7 +23,7 @@
 
       <link rel="stylesheet" href="{% static 'css/student_profile.css' %}" />
 
-      <title>Faculty Profile</title>
+      <title>Profile</title>
    </head>
    <body>
       <nav class="navbar">
@@ -58,28 +58,21 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
-                  <span class="link-text">Student Profile</span>
-               </a>
-            </li>
-
-            <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:student_home' %}" class="nav-link">
                   <img src="{%static 'images/presentation 1.svg'%}" alt="" />
-                  <span class="link-text">Faculty Profile</span>
+                  <span class="link-text">Student Home</span>
                </a>
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <img src="{%static 'images/x-button 1.svg'%}" alt="" />
-                  <span class="link-text">Course Drop</span>
+               <a href="{% url 'student_app:profile' %}" class="nav-link">
+                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
+                  <span class="link-text">View Profile</span>
                </a>
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:grade_overview' %}" class="nav-link">
                   <img src="{%static 'images/grade 1.svg'%}" alt="" />
                   <span class="link-text">Grade Overview</span>
                </a>
@@ -207,7 +200,7 @@
 
       <link rel="stylesheet" href="{% static 'css/student_profile.css' %}" />
 
-      <title>Faculty Profile</title>
+      <title>Profile</title>
    </head>
    <body>
       <nav class="navbar">
@@ -242,28 +235,21 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
-                  <span class="link-text">Student Profile</span>
-               </a>
-            </li>
-
-            <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:student_home' %}" class="nav-link">
                   <img src="{%static 'images/presentation 1.svg'%}" alt="" />
-                  <span class="link-text">Faculty Profile</span>
+                  <span class="link-text">Student Home</span>
                </a>
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <img src="{%static 'images/x-button 1.svg'%}" alt="" />
-                  <span class="link-text">Course Drop</span>
+               <a href="{% url 'student_app:profile' %}" class="nav-link">
+                  <img src="{%static 'images/graduating-student 1.svg'%}" alt="" />
+                  <span class="link-text">View Profile</span>
                </a>
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:grade_overview' %}" class="nav-link">
                   <img src="{%static 'images/grade 1.svg'%}" alt="" />
                   <span class="link-text">Grade Overview</span>
                </a>
@@ -284,7 +270,7 @@
             </li>
 
             <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{% url 'student_app:major_overview' %}" class="nav-link">
                   <img src="{%static 'images/reading 1.svg'%}" alt="" />
                   <span class="link-text">Major Overview</span>
                </a>
